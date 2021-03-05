@@ -16,18 +16,27 @@ let pcScore = 0;
 function playRound0() {
     let computerSelection = computerPlay1()
     let playerSelection = prompt('Choose rock, paper or scissors', '').toLowerCase();
-    let log = "";
 
     if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
         (playerSelection == 'scissors' && computerSelection == 'paper') ||
         (playerSelection == 'paper' && computerSelection == 'rock')) {
         playerScore++;
-        log = ('You win! computers are so dumb')
-    } else if (playerSelection == computerSelection) {
-        log = ('It\'s a tie. fuck draws lets go again')
-    } else {
+    } else if ((playerSelection == 'scissors' && computerSelection == 'rock') ||
+        (playerSelection == 'paper' && computerSelection == 'scissors') ||
+        (playerSelection == 'rock' && computerSelection == 'paper')) {
         pcScore++;
-        log = ('You lose! dickhead')
     }
-    return log;
 }
+
+function game() {
+    for (let i = 0; i < 5; i++) {
+        playRound0();
+    }
+    if (pcScore > playerScore) {
+        return `You lose! dickhead Players score: ${playerScore} Pc score: ${pcScore}`;
+    } else if (playerScore > pcScore) {
+        return `You win! computers are so dumb Players score: ${playerScore} Pc score: ${pcScore}`;
+    }
+}
+
+game()
