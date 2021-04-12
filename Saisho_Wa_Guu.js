@@ -1,42 +1,58 @@
-/* Rock Paper Scissors 
-make a function witch will randomly output Rock Paper Scissors this will be the pc
-make another function that will play one round of RPS between the player and the pc
-make a function that will play RPS 5 timees and declare a winner
-Use prompt() to get input from the user.*/
+let playerScore = 0
+let pcScore = 0
+const btn = document.querySelectorAll('input')
 
-function computerPlay1() {
-    let pcPlay = ['rock', 'paper', 'Scissors'];
-    let randomPlay = pcPlay[Math.floor(Math.random() * pcPlay.length)];
-    return randomPlay;
+
+function computerPlay() {
+    let pcPlay = ['rock', 'paper', 'scissors'];
+    return pcPlay[Math.floor(Math.random() * pcPlay.length)];
 }
 
-let playerScore = 0;
-let pcScore = 0;
+function disableButtons() {
+    btn.forEach(off => {
+        off.disabled = true
+    });
+}
 
-function playRound0() {
-    let computerSelection = computerPlay1()
-    let playerSelection = prompt('Choose rock, paper or scissors', '').toLowerCase();
+function playAgain() {
+    window.location.reload();
+}
 
-    if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
-        (playerSelection == 'scissors' && computerSelection == 'paper') ||
-        (playerSelection == 'paper' && computerSelection == 'rock')) {
+function playRound(playerSelection) {
+    let computerSelection = computerPlay();
+    let result = '';
+
+    if ((playerSelection === 'rock' && computerSelection === 'scissors') ||
+        (playerSelection === 'paper' && computerSelection === 'rock') ||
+        (playerSelection === 'scissors' && computerSelection === 'paper')) {
+
         playerScore++;
-    } else if ((playerSelection == 'scissors' && computerSelection == 'rock') ||
-        (playerSelection == 'paper' && computerSelection == 'scissors') ||
-        (playerSelection == 'rock' && computerSelection == 'paper')) {
+        result = `Yay you win! ${playerSelection} beats ${computerSelection} 
+        Player score: ${playerScore} Computer score: ${pcScore}`;
+
+        if (playerScore === 5) {
+            result += ' You win the game! computers are so dumb HAHAHA';
+            disableButtons();
+        }
+
+    } else if (playerSelection === computerSelection) {
+        result = `Its a draw you both draw ${playerSelection}
+        Player score: ${playerScore} Computer score: ${pcScore}`;
+    } else {
         pcScore++;
-    }
-}
+        result = `You lose! ${computerSelection} beats ${playerSelection}
+        Player score: ${playerScore} Computer score: ${pcScore}`;
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-        playRound0();
+        if (pcScore === 5) {
+            result += ' The computer wins! PC gang gang';
+            disableButtons();
+        }
     }
-    if (pcScore > playerScore) {
-        return `You lose! dickhead Players score: ${playerScore} Pc score: ${pcScore}`;
-    } else if (playerScore > pcScore) {
-        return `You win! computers are so dumb Players score: ${playerScore} Pc score: ${pcScore}`;
-    }
+    document.querySelector('.results').textContent = result;
+    return;
 }
-
-game()
+btn.forEach(button => {
+    button.addEventListener('click', () => {
+        playRound(button.value);
+    });
+});
