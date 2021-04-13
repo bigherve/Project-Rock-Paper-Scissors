@@ -1,6 +1,6 @@
-let playerScore = 0
-let pcScore = 0
-const btn = document.querySelectorAll('input')
+let playerScore = 0;
+let pcScore = 0;
+const btn = document.querySelectorAll('input');
 
 
 function computerPlay() {
