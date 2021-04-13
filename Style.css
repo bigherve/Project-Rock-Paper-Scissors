@@ -1,0 +1,42 @@
+.container {
+    display: grid;
+    grid-gap: 10px;
+    height: 500px;
+    width: 500px;
+    justify-content: center;
+    align-content: center;
+    border: 10px solid #000;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 100px);
+    grid-template-areas: 'h1' 'h2' 'results' 'btn' 'playagain'
+}
+
+.demo1 {
+    grid-area: h1;
+    justify-self: center;
+    align-self: center;
+}
+
+.demo2 {
+    grid-area: h2;
+    justify-self: center;
+    align-self: center;
+}
+
+.selection {
+    grid-area: btn;
+    justify-self: center;
+    align-self: center;
+}
+
+.results {
+    grid-area: results;
+    justify-self: center;
+    align-self: center;
+}
+
+.play-again {
+    grid-area: playagain;
+    justify-self: center;
+    align-self: center;
+}
