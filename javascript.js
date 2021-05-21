@@ -1,7 +1,6 @@
 let playerScore = 0;
 let pcScore = 0;
-const btn = document.querySelectorAll('input');
-
+const btn = document.querySelectorAll('.rps');
 
 function computerPlay() {
     let pcPlay = ['rock', 'paper', 'scissors'];
@@ -10,7 +9,7 @@ function computerPlay() {
 
 function disableButtons() {
     btn.forEach(off => {
-        off.disabled = true
+        off.disabled = true;
     });
 }
 
@@ -28,29 +27,29 @@ function playRound(playerSelection) {
 
         playerScore++;
         result = `Yay you win! ${playerSelection} beats ${computerSelection} 
-        Player score: ${playerScore} Computer score: ${pcScore}`;
+        Player score: ${playerScore} Computer score: ${pcScore}.`;
 
         if (playerScore === 5) {
-            result += ' You win the game! computers are so dumb HAHAHA';
+            result = `You win the game! With a score of ${playerScore} to ${pcScore} YAY.`;
             disableButtons();
         }
 
     } else if (playerSelection === computerSelection) {
-        result = `Its a draw you both draw ${playerSelection}
-        Player score: ${playerScore} Computer score: ${pcScore}`;
+        result = `It's a draw you both got ${playerSelection} go again.`;
     } else {
         pcScore++;
         result = `You lose! ${computerSelection} beats ${playerSelection}
-        Player score: ${playerScore} Computer score: ${pcScore}`;
+        Player score: ${playerScore} Computer score: ${pcScore}.`;
 
         if (pcScore === 5) {
-            result += ' The computer wins! PC gang gang';
+            result = `The computer wins! With a score of ${pcScore} to ${playerScore} BOO.`;
             disableButtons();
         }
     }
     document.querySelector('.results').textContent = result;
     return;
 }
+
 btn.forEach(button => {
     button.addEventListener('click', () => {
         playRound(button.value);

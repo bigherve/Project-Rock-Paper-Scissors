@@ -1,34 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewprot" content="width=device=wide, initial-scale=1.0" />
+    <title>Rock Paper Scissors Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewprot" content="width=device=wide, initial-scale=1.0">
-    <title>RPS Game</title>
-    <link rel="stylesheet" href="Style.css">
-</head>
-
-<body>
+  <body>
     <div class="container">
-        <h1 class="demo1">Rock Paper Scissors</h1>
+      <h1 class="demo1">Rock Paper Scissors</h1>
 
-        <h2 class="demo2">Best out of 5 wins</h2>
+      <h2 class="demo2">Best out of 5 wins</h2>
 
-        <div class="selection">
-            <input type="button" value="rock"></input>
-            <input type="button" value="paper"></input>
-            <input type="button" value="scissors"></input>
-        </div>
+      <div class="selection">
+        <button class="rps" value="rock">Rock</button>
+        <button class="rps" value="paper">Paper</button>
+        <button class="rps" value="scissors">Scissors</button>
+      </div>
 
-        <div class="results"></div>
+      <div class="results"></div>
 
-        <div class="play-again">
-            <button type="submit" onClick="playAgain()">Play Again</button>
-        </div>
+      <div class="play-again">
+        <button type="submit" onclick="playAgain()">Play Again</button>
+      </div>
     </div>
 
-    <script src="Saisho_Wa_Guu.js"></script>
-
-</body>
-
+    <script src="javascript.js"></script>
+  </body>
 </html>
