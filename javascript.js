@@ -1,6 +1,7 @@
 let playerScore = 0;
 let pcScore = 0;
 const btn = document.querySelectorAll('.rps');
+const restart = document.querySelector('#go-again')
 
 function computerPlay() {
     let pcPlay = ['rock', 'paper', 'scissors'];
@@ -49,6 +50,8 @@ function playRound(playerSelection) {
     document.querySelector('.results').textContent = result;
     return;
 }
+
+restart.addEventListener('click', playAgain);
 
 btn.forEach(button => {
     button.addEventListener('click', () => {
